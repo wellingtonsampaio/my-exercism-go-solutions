@@ -1,10 +1,15 @@
-// Package clause.
+// Package gigasecond contains the implementation of the Exercism's go exercise 'gigasecond'.
 package gigasecond
 
+import "time"
+
 // Constant declaration.
-const testVersion = ? // find the value in gigasecond_test.go
+const testVersion = 4
 
-// API function.  It uses a type from the Go standard library.
-func AddGigasecond(time.Time) time.Time
+// Represents a gigasecond. For performance boost, precalculate the gigasecond and reuse
+const gigaSecondForDuration = time.Duration(1000000000) * time.Second
 
-// Reviewers don't think much of stub comments.  Replace or remove.
+// AddGigasecond adds a gigasecond (10^9) to the given time.
+func AddGigasecond(in time.Time) time.Time {
+	return in.Add(gigaSecondForDuration)
+}
